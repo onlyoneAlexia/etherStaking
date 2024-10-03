@@ -17,9 +17,13 @@ uint256 timeStaked;
  }
 
  mapping(address=>User) users;
-
+//our rate is ten% per year, but i decided to make it per hour.
 uint256 rate=11;
 
+constructor(address x, address y) {
+    Stakingtoken = x;
+    RewardsToken = y;
+    }
 
 function stake(uint256 _amount) public {
     require(IERC20(Stakingtoken).transferFrom(msg.sender,address(this),_amount));
